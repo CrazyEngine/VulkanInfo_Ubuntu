@@ -2,13 +2,17 @@
 {
     "version": "2.0.0",
     "tasks": [
-        {
-            "label": "Compile", // 任务名称，与launch.json的preLaunchTask相对应
-            "command": "g++", // 要使用的编译器
+        //每一对花括号就是一个task。如果只有一个task，按“Ctrl+Shift+B”就直接运行这个task；
+		//否则就会下拉框中弹出所有的task（名字就是字段"label"后面注明的）。
+		{
+            "label": "Compile", // task的名称，在launch.json里的字段“preLaunchTask”里进行引用。
+            // 这个task要执行的可执行程序，此处指定了使用编译器g++（Ubuntu下可使用的编译器有g++或者gcc，Windows下面使用msbuild）。
+			"command": "g++",
+			// 这个task要执行的可执行程序的参数
             "args": [
                 //"${file}",
                 "-g", // 生成和调试有关的信息
-                "${workspaceRoot}/vulkaninfo.cpp",
+                "${workspaceRoot}/vulkaninfo.cpp", // 
                 "-o", // 指定输出文件名，不加该参数则默认输出a.exe
                 "VulkanInfo.exe",
                 //"${fileDirname}/${fileBasenameNoExtension}.exe",
